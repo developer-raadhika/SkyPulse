@@ -1,38 +1,352 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #164e63, #0f766e);
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.weather-container {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 30px 20px;
+}
+
+.weather-card {
+  width: 100%;
+  max-width: 850px;
+  padding: 40px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.weather-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.weather-label {
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.weather-header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.weather-header p:last-child {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* Search */
+
+.search-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+.search-box button {
+  padding: 16px 28px;
+  border: none;
+  border-radius: 14px;
+  background: white;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  transform: translateY(-3px);
+  background: #dffbff;
+}
+
+/* Messages */
+
+.message,
+.error-message {
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+.message {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.error-message {
+  background: rgba(255, 80, 80, 0.2);
+  border: 1px solid rgba(255, 120, 120, 0.4);
+}
+
+/* Weather Result */
+
+.weather-result {
+  margin-top: 25px;
+}
+
+.location {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.location h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.location p {
+  text-transform: capitalize;
+  opacity: 0.8;
+}
+
+/* Temperature */
+
+.temperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0 30px;
+}
+
+.temperature img {
+  width: 100px;
+  height: 100px;
+}
+
+.temperature strong {
+  font-size: 64px;
+}
+
+/* Details */
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.detail {
+  text-align: center;
+  padding: 22px 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+.detail:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.detail span {
+  font-size: 28px;
+}
+
+.detail p {
+  margin: 10px 0 6px;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+.detail strong {
+  font-size: 18px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .weather-card  {
+    padding: 25px 18px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .weather-header h1 {
+    font-size: 38px;
   }
+
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .weather-container {
+    padding: 15px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+
+  .temperature strong {
+    font-size: 50px;
+  }
+
+  .temperature img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .location h2 {
+    font-size: 24px;
+  }
+}
+
+.weather-mood {
+  margin-top: 15px;
+  padding: 12px 18px;
+  display: inline-block;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 14px;
+}
+
+.status-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.day-status {
+  display: inline-block;
+  margin-top: 12px;
+  margin-left: 8px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.weather-container.clear {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+}
+
+.weather-container.clouds {
+  background: linear-gradient(135deg, #536976, #292e49);
+}
+
+.weather-container.rain {
+  background: linear-gradient(135deg, #314755, #26a0da);
+}
+
+.weather-container.drizzle {
+  background: linear-gradient(135deg, #4b79a1, #283e51);
+}
+
+.weather-container.thunderstorm {
+  background: linear-gradient(135deg, #232526, #414345);
+}
+
+.weather-container.snow {
+  background: linear-gradient(135deg, #83a4d4, #b6fbff);
+}
+
+.weather-container {
+  transition: background 0.6s ease;
+}
+
+.weather-insights {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.weather-insights h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.insight-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.insight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.insight > span {
+  font-size: 28px;
+}
+
+.insight strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.insight p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.75;
+}
+@media (max-width: 700px) {
+  .insight-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TODAY'S ACTIVITY */
+
+.activity-card {
+  margin-top: 25px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.activity-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.activity-card p {
+  line-height: 1.6;
+  opacity: 0.9;
 }
