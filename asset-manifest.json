@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SkyPulse/static/css/main.6124972a.css",
+    "main.js": "/SkyPulse/static/js/main.58df7760.js",
+    "index.html": "/SkyPulse/index.html",
+    "main.6124972a.css.map": "/SkyPulse/static/css/main.6124972a.css.map",
+    "main.58df7760.js.map": "/SkyPulse/static/js/main.58df7760.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6124972a.css",
+    "static/js/main.58df7760.js"
+  ]
+}
